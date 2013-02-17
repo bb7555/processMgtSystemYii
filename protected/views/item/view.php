@@ -34,11 +34,11 @@ $this->menu=array(
 		'img_second_comment',
 		'seo_metas',
 		'prod_search_metas',
-		'cat_search_metas',
 		'facebook_metas',
 		'retail_price',
 		'base_prace',
 		'prod_match_img',
 		'url_set',
+		'weight',
 	),
 )); ?>

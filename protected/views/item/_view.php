@@ -65,10 +65,6 @@
 	<?php echo CHtml::encode($data->prod_search_metas); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('cat_search_metas')); ?>:</b>
-	<?php echo CHtml::encode($data->cat_search_metas); ?>
-	<br />
-
 	<b><?php echo CHtml::encode($data->getAttributeLabel('facebook_metas')); ?>:</b>
 	<?php echo CHtml::encode($data->facebook_metas); ?>
 	<br />
@@ -87,6 +83,10 @@
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('url_set')); ?>:</b>
 	<?php echo CHtml::encode($data->url_set); ?>
+	<br />
+
+	<b><?php echo CHtml::encode($data->getAttributeLabel('weight')); ?>:</b>
+	<?php echo CHtml::encode($data->weight); ?>
 	<br />
 
 	*/ ?>

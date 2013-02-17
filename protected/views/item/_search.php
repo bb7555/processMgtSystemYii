@@ -57,7 +57,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'img_needed'); ?>
-		<?php echo $form->textField($model,'img_needed',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'img_needed'); ?>
 	</div>
 
 	<div class="row">
@@ -67,7 +67,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'img_second_needed'); ?>
-		<?php echo $form->textField($model,'img_second_needed',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'img_second_needed'); ?>
 	</div>
 
 	<div class="row">
@@ -77,42 +77,42 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'seo_metas'); ?>
-		<?php echo $form->textField($model,'seo_metas',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'seo_metas'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'prod_search_metas'); ?>
-		<?php echo $form->textField($model,'prod_search_metas',array('size'=>1,'maxlength'=>1)); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'cat_search_metas'); ?>
-		<?php echo $form->textField($model,'cat_search_metas',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'prod_search_metas'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'facebook_metas'); ?>
-		<?php echo $form->textField($model,'facebook_metas',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'facebook_metas'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'retail_price'); ?>
-		<?php echo $form->textField($model,'retail_price',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'retail_price'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'base_prace'); ?>
-		<?php echo $form->textField($model,'base_prace',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'base_prace'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'prod_match_img'); ?>
-		<?php echo $form->textField($model,'prod_match_img',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'prod_match_img'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->label($model,'url_set'); ?>
-		<?php echo $form->textField($model,'url_set',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'url_set'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->label($model,'weight'); ?>
+		<?php echo $form->textField($model,'weight'); ?>
 	</div>
 
 	<div class="row buttons">

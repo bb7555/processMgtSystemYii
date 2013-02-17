@@ -1,7 +1,10 @@
 <?php
 
-class ItemController extends Controller
+class UserController extends Controller
 {
+	
+	
+	
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -31,11 +34,11 @@ class ItemController extends Controller
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index','view','admin','create','update'),
+				'actions'=>array(''),
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('delete'),
+				'actions'=>array('admin','delete','create','update','index','view'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -61,14 +64,16 @@ class ItemController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Item;
+		$model=new User;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Item']))
+		if(isset($_POST['User']))
 		{
-			$model->attributes=$_POST['Item'];
+			$_POST['User']['password'] = $model->hide($_POST['User']['password']);
+			$model->attributes=$_POST['User'];
+			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -90,9 +95,9 @@ class ItemController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Item']))
+		if(isset($_POST['User']))
 		{
-			$model->attributes=$_POST['Item'];
+			$model->attributes=$_POST['User'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -127,7 +132,7 @@ class ItemController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Item');
+		$dataProvider=new CActiveDataProvider('User');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -138,10 +143,10 @@ class ItemController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Item('search');
+		$model=new User('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Item']))
-			$model->attributes=$_GET['Item'];
+		if(isset($_GET['User']))
+			$model->attributes=$_GET['User'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -155,7 +160,7 @@ class ItemController extends Controller
 	 */
 	public function loadModel($id)
 	{
-		$model=Item::model()->findByPk($id);
+		$model=User::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -167,7 +172,7 @@ class ItemController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='item-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='user-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

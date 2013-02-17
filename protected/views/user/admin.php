@@ -1,12 +1,12 @@
 <?php
 $this->breadcrumbs=array(
-	'Items'=>array('index'),
+	'Users'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Item', 'url'=>array('index')),
-	array('label'=>'Create Item', 'url'=>array('create')),
+	array('label'=>'List User', 'url'=>array('index')),
+	array('label'=>'Create User', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -15,7 +15,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('item-grid', {
+	$.fn.yiiGridView.update('user-grid', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Items</h1>
+<h1>Manage Users</h1>
 
 <p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
@@ -37,37 +37,32 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'item-grid',
+<?php 
+$this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'user-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id',
-		'product_id',
-		'name',
-		'url',
-		'custom_url',
-		'img',
-		/*
-		'product_status',
-		'ad_status',
-		'maint_status',
-		'img_size',
-		'img_needed',
-		'img_comment',
-		'img_second_needed',
-		'img_second_comment',
-		'seo_metas',
-		'prod_search_metas',
-		'facebook_metas',
-		'retail_price',
-		'base_prace',
-		'prod_match_img',
-		'url_set',
-		'weight',
-		*/
+		array(
+			'name'=>'User',
+			'value'=>'$data->username',
+			'filter'=>false,
+		),
+		
+		array(
+			'name'=>'Department',
+			'value'=>'User::convertRole($data->role)',
+			'filter'=>false,
+		),
+		
+		
 		array(
 			'class'=>'CButtonColumn',
 		),
 	),
-)); ?>
+)); 
+
+
+
+
+?>

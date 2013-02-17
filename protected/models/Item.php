@@ -14,21 +14,22 @@
  * @property integer $ad_status
  * @property integer $maint_status
  * @property integer $img_size
- * @property string $img_needed
+ * @property integer $img_needed
  * @property string $img_comment
- * @property string $img_second_needed
+ * @property integer $img_second_needed
  * @property string $img_second_comment
- * @property string $seo_metas
- * @property string $prod_search_metas
- * @property string $cat_search_metas
- * @property string $facebook_metas
- * @property string $retail_price
- * @property string $base_prace
- * @property string $prod_match_img
- * @property string $url_set
+ * @property integer $seo_metas
+ * @property integer $prod_search_metas
+ * @property integer $facebook_metas
+ * @property integer $retail_price
+ * @property integer $base_prace
+ * @property integer $prod_match_img
+ * @property integer $url_set
+ * @property double $weight
  */
 class Item extends CActiveRecord
 {
+	
 	//constants for pinnacle status data field
 	const STATUS_PINNACLE_READY=1;
 	const STATUS_PINNACLE_NOT_READY=0;
@@ -72,14 +73,14 @@ class Item extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('product_status, ad_status, maint_status, img_size', 'required'),
-			array('product_status, ad_status, maint_status, img_size', 'numerical', 'integerOnly'=>true),
+			array('product_status, ad_status, maint_status, img_size, img_needed, img_second_needed, seo_metas, prod_search_metas, facebook_metas, retail_price, base_prace, prod_match_img, url_set, weight', 'required'),
+			array('product_status, ad_status, maint_status, img_size, img_needed, img_second_needed, seo_metas, prod_search_metas, facebook_metas, retail_price, base_prace, prod_match_img, url_set', 'numerical', 'integerOnly'=>true),
+			array('weight', 'numerical'),
 			array('product_id', 'length', 'max'=>255),
-			array('img_needed, img_second_needed, seo_metas, prod_search_metas, cat_search_metas, facebook_metas, retail_price, base_prace, prod_match_img, url_set', 'length', 'max'=>1),
 			array('name, url, custom_url, img, img_comment, img_second_comment', 'safe'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, product_id, name, url, custom_url, img, product_status, ad_status, maint_status, img_size, img_needed, img_comment, img_second_needed, img_second_comment, seo_metas, prod_search_metas, cat_search_metas, facebook_metas, retail_price, base_prace, prod_match_img, url_set', 'safe', 'on'=>'search'),
+			array('id, product_id, name, url, custom_url, img, product_status, ad_status, maint_status, img_size, img_needed, img_comment, img_second_needed, img_second_comment, seo_metas, prod_search_metas, facebook_metas, retail_price, base_prace, prod_match_img, url_set, weight', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -116,12 +117,12 @@ class Item extends CActiveRecord
 			'img_second_comment' => 'Img Second Comment',
 			'seo_metas' => 'Seo Metas',
 			'prod_search_metas' => 'Prod Search Metas',
-			'cat_search_metas' => 'Cat Search Metas',
 			'facebook_metas' => 'Facebook Metas',
 			'retail_price' => 'Retail Price',
 			'base_prace' => 'Base Prace',
 			'prod_match_img' => 'Prod Match Img',
 			'url_set' => 'Url Set',
+			'weight' => 'Weight',
 		);
 	}
 
@@ -146,18 +147,18 @@ class Item extends CActiveRecord
 		$criteria->compare('ad_status',$this->ad_status);
 		$criteria->compare('maint_status',$this->maint_status);
 		$criteria->compare('img_size',$this->img_size);
-		$criteria->compare('img_needed',$this->img_needed,true);
+		$criteria->compare('img_needed',$this->img_needed);
 		$criteria->compare('img_comment',$this->img_comment,true);
-		$criteria->compare('img_second_needed',$this->img_second_needed,true);
+		$criteria->compare('img_second_needed',$this->img_second_needed);
 		$criteria->compare('img_second_comment',$this->img_second_comment,true);
-		$criteria->compare('seo_metas',$this->seo_metas,true);
-		$criteria->compare('prod_search_metas',$this->prod_search_metas,true);
-		$criteria->compare('cat_search_metas',$this->cat_search_metas,true);
-		$criteria->compare('facebook_metas',$this->facebook_metas,true);
-		$criteria->compare('retail_price',$this->retail_price,true);
-		$criteria->compare('base_prace',$this->base_prace,true);
-		$criteria->compare('prod_match_img',$this->prod_match_img,true);
-		$criteria->compare('url_set',$this->url_set,true);
+		$criteria->compare('seo_metas',$this->seo_metas);
+		$criteria->compare('prod_search_metas',$this->prod_search_metas);
+		$criteria->compare('facebook_metas',$this->facebook_metas);
+		$criteria->compare('retail_price',$this->retail_price);
+		$criteria->compare('base_prace',$this->base_prace);
+		$criteria->compare('prod_match_img',$this->prod_match_img);
+		$criteria->compare('url_set',$this->url_set);
+		$criteria->compare('weight',$this->weight);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
