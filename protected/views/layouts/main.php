@@ -30,6 +30,7 @@
 			'items'=>array(
 				array('label'=>'Items', 'url'=>array('/item/admin')),
 				array('label'=>'Manage Users', 'url'=>array('/user/admin'), 'visible'=>(!Yii::app()->user->isGuest && Yii::app()->user->name=="admin")),
+				array('label'=>'View Activity Log', 'url'=>array('/log/admin'), 'visible'=>(!Yii::app()->user->isGuest && Yii::app()->user->name=="admin")),
 				
 				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
